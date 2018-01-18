@@ -72,7 +72,7 @@ var and_xor=function(bin,data,boo) {
 		top^=top_;
 		rest^=rest_;
 	};
-	top=top>>>0;
+	top=top>>>0; //useless but...
 	rest=rest>>>0;
 	return parseInt(to_code(top,2,16)+to_code(rest,8,16),16);
 };
@@ -93,8 +93,8 @@ var get_hash_size=function(version) {
 function get_type(version) {
 	console.log(to_code(version,8,2));
 	switch (version&0x78) {
-	  case 0: return 'P2PKH';
-	  case 8: return 'P2SH';
+	  case 0: return 'p2pkh';
+	  case 8: return 'p2sh';
 	  default: throw ('Invalid address type');
 	};
 };
@@ -104,7 +104,7 @@ var polymod=function(v) {
 	var c0;
 	var h;
 	var l=v.length;
-    for (var i=0;i<l;i++) {
+	for (var i=0;i<l;i++) {
 		var top,rest;
 		var bin=to_code(c,40,2);
 		c0=parseInt(bin.slice(0,5),2);
@@ -186,37 +186,37 @@ var decode_b=function(addr) {
 
 Tests
 
-76a04053bda0a88bda5177b86a15c3b29f559873 1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu 	bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a
-cb481232299cd5743151ac4b2d63ae198e7bb0a9 1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR 	bitcoincash:qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy
-011f28e473c95f4013d7d53ec5fbc3b42df8ed10 16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb 		bitcoincash:qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r
-76a04053bda0a88bda5177b86a15c3b29f559873 3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC 	bitcoincash:ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq
-cb481232299cd5743151ac4b2d63ae198e7bb0a9 3LDsS579y7sruadqu11beEJoTjdFiFCdX4 	bitcoincash:pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e
-011f28e473c95f4013d7d53ec5fbc3b42df8ed10 31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw 	bitcoincash:pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37
+76a04053bda0a88bda5177b86a15c3b29f559873 1BpEi6DfDAUFd7GtittLSdBeYJvcoaVggu		bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a
+cb481232299cd5743151ac4b2d63ae198e7bb0a9 1KXrWXciRDZUpQwQmuM1DbwsKDLYAYsVLR		bitcoincash:qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy
+011f28e473c95f4013d7d53ec5fbc3b42df8ed10 16w1D5WRVKJuZUsSRzdLp9w3YGcgoxDXb		bitcoincash:qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r
+76a04053bda0a88bda5177b86a15c3b29f559873 3CWFddi6m4ndiGyKqzYvsFYagqDLPVMTzC		bitcoincash:ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq
+cb481232299cd5743151ac4b2d63ae198e7bb0a9 3LDsS579y7sruadqu11beEJoTjdFiFCdX4		bitcoincash:pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e
+011f28e473c95f4013d7d53ec5fbc3b42df8ed10 31nwvkZwyPdgzjBJZXfDmSWsC4ZLKpYyUw		bitcoincash:pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37
 
 bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a
 00000000
 { hash: '76a04053bda0a88bda5177b86a15c3b29f559873',
-  type: 'P2PKH' }
+  type: 'p2pkh' }
 bitcoincash:qr95sy3j9xwd2ap32xkykttr4cvcu7as4y0qverfuy
 00000000
 { hash: 'cb481232299cd5743151ac4b2d63ae198e7bb0a9',
-  type: 'P2PKH' }
+  type: 'p2pkh' }
 bitcoincash:qqq3728yw0y47sqn6l2na30mcw6zm78dzqre909m2r
 00000000
 { hash: '011f28e473c95f4013d7d53ec5fbc3b42df8ed10',
-  type: 'P2PKH' }
+  type: 'p2pkh' }
 bitcoincash:ppm2qsznhks23z7629mms6s4cwef74vcwvn0h829pq
 00001000
 { hash: '76a04053bda0a88bda5177b86a15c3b29f559873',
-  type: 'P2SH' }
+  type: 'p2sh' }
 bitcoincash:pr95sy3j9xwd2ap32xkykttr4cvcu7as4yc93ky28e
 00001000
 { hash: 'cb481232299cd5743151ac4b2d63ae198e7bb0a9',
-  type: 'P2SH' }
+  type: 'p2sh' }
 bitcoincash:pqq3728yw0y47sqn6l2na30mcw6zm78dzq5ucqzc37
 00001000
 { hash: '011f28e473c95f4013d7d53ec5fbc3b42df8ed10',
-  type: 'P2SH' }
+  type: 'p2sh' }
 
 var addr;
 
