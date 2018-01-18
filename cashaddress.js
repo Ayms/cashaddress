@@ -167,8 +167,7 @@ var decode_b=function(addr) {
 	if (checksum_.join('')!==checksum__.join('')) {
 		throw "Invalid checksum";
 	};
-	hash=addr;
-	hash=hash.map(function(val) {return to_code(val,5,2)});
+	hash=addr.map(function(val) {return to_code(val,5,2)});
 	hash=hash.join('');
 	version=parseInt(hash.slice(0,8),2);
 	size=get_hash_size(version);
