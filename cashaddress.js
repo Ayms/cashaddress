@@ -102,7 +102,6 @@ function get_type(version) {
 var polymod=function(v) {
 	var c=1;
 	var c0;
-	var h;
 	var l=v.length;
 	for (var i=0;i<l;i++) {
 		var top,rest;
