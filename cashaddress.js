@@ -117,9 +117,9 @@ var polymod=function(v) {
 		if (c0&0x04) {c=and_xor(c,0xf33e5fb3c4)};
 		if (c0&0x08) {c=and_xor(c,0xae2eabe2a8)};
 		if (c0&0x10) {c=and_xor(c,0x1e4f43e470)};
-    };
+	};
 	c=and_xor(c,1);
-    return to_5(new Buffer(to_code(c,10,16),'hex'));
+	return to_5(new Buffer(to_code(c,10,16),'hex'));
 };
 
 var checksum=function(payload,prefix) {
