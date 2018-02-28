@@ -91,7 +91,7 @@ var get_hash_size=function(version) {
 };
 
 function get_type(version) {
-	console.log(to_code(version,8,2));
+	//console.log(to_code(version,8,2));
 	switch (version&0x78) {
 	  case 0: return 'p2pkh';
 	  case 8: return 'p2sh';
@@ -179,6 +179,9 @@ var decode_b=function(addr) {
 	};
 	return {hash:new Buffer(buf).slice(1).toString('hex'),type:type};
 };
+
+module.exports.decode_b=decode_b;
+module.exports.encode_b=encode_b;
 
 /*
 
